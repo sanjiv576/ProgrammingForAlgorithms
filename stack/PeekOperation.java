@@ -1,4 +1,4 @@
-package stack;
+// package stack;
 // Peek operation example in the Stack
 // Note: peek --> returns the element at the top of the stack or returns null in empty stack
 

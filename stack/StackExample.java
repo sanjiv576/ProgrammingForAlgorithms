@@ -1,4 +1,4 @@
-package stack;
+// package stack;
 // Exam ma aau cha
 // Stack implementation 
 public class StackExample {

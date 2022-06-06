@@ -1,4 +1,4 @@
-package stack;
+// package stack;
 // this is driver class for testing StackExample.java
 public class Test {
     public static void main(String[] args){

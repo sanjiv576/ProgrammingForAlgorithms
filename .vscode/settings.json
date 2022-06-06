@@ -1,7 +1,14 @@
 {
     "java.project.sourcePaths": [
+        "stack",
+        "queue",
         "practice",
+        "linkedList",
+        "hashMap",
+        "exercises",
+        "doublyLInkedList",
+        "dnc",
         "array",
-        "queue"
+        "twoDarray"
     ]
 }
