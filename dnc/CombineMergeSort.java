@@ -1,6 +1,6 @@
-public class CombineMergeSort {
+// how to merge and sort two sorted arrays ?
 
-    
+public class CombineMergeSort {
 
     public int[] merge(int[] a, int[] b) {
 
