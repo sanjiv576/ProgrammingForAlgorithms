@@ -1,4 +1,4 @@
-
+import java.util.*;
 // Linear queue implementaion 
 // Note: this question was asked in last exam
 public class QueueExample {
@@ -72,6 +72,10 @@ public class QueueExample {
         return front == -1;
     }
 
+    public void printQueue(){
+        System.out.println(Arrays.toString(queues));
+    }
+
     public static void main(String[] args){
         QueueExample q = new QueueExample(5);
         q.enqueue(10);
@@ -79,6 +83,8 @@ public class QueueExample {
         q.enqueue(90);
         System.out.println(q.dequeue());
         System.out.println(q.dequeue());
+
+        q.printQueue();
     }
 
 

@@ -1,14 +1,16 @@
 {
     "java.project.sourcePaths": [
+        "twoDarray",
         "stack",
         "queue",
         "practice",
         "linkedList",
         "hashMap",
+        "graph",
         "exercises",
         "doublyLInkedList",
         "dnc",
         "array",
-        "twoDarray"
+        "GraphImplementation"
     ]
 }

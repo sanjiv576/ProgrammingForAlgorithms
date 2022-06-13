@@ -1,5 +1,5 @@
-public class LinkedListImp {
-    static class Node {
+public class SinglyLInkedList {
+    public static class Node {
 
         // declaring data
         int data;
@@ -8,7 +8,7 @@ public class LinkedListImp {
         // NOte: generally, next is prefered to create variable for storing address in Linked list
         Node next;
 
-        Node(int data){
+        public Node(int data){
             this.data = data;
             // first off, address of the first element or head of the Linked list is null
             this.next = null;
@@ -20,25 +20,17 @@ public class LinkedListImp {
         int size = 0;
 
         // algo for adding  an element to the tail part of the Linked list 
-        public void append(int data){
+        public void addNode(int data){
             Node newNode = new Node(data);
             size++;
             // if element is going to be inserted/added/appended for the first time, then, 
             if(head == null){
-                head = newNode;
-                // head = newNode.next;
-                // head.next = newNode;
+                head = tail = newNode;
             }
             else {
 
-                // Node current = newNode;
-                Node current = head;
-
-                while(current.next != null){
-                    current = current.next;
-                }
-                // head = current.next;
-                current.next = newNode;
+                tail.next = newNode;
+                tail = newNode;
 
             }
         }
@@ -72,7 +64,7 @@ public class LinkedListImp {
 
         public int getDataAtAnyPos(int pos){
             Node current = head;
-            for(int i = 2; i <= pos; i++){
+            for(int i = 1; i <= pos; i++){
                 current = current.next;
             }
             return current.data;
@@ -90,21 +82,5 @@ public class LinkedListImp {
             }
 
         }
-    }
-
-    public static void main(String[] args){
-        Node obj = new Node(30);
-        obj.append(40);
-        obj.append(50);
-        obj.append(60);
-        obj.append(70);
-        obj.append(80);
-
-        obj.addHeadFirst(100);
-        obj.printLinkedList();
-
-        System.out.println("Data: " + obj.getDataAtAnyPos(5));
-
-
     }
 }
