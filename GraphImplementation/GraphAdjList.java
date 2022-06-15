@@ -48,6 +48,43 @@ public class GraphAdjList {
         }
     }
 
+    // graph traversal BFS
+
+    public void BFS(int rootNode){
+
+        System.out.println("Printing BFS: ");
+        // for visited element memorization
+        boolean visited [] = new boolean[vertices];
+        // for keeping visiting nodes
+        QueueExample que = new QueueExample(vertices);
+
+        // already partially visited so making it true;
+        visited[rootNode] = true;
+        que.enqueue(rootNode);
+
+        // if que is not empty
+        while (!que.isEmpty()){
+            int x = que.dequeue();
+
+            // getting adj nodes i.e [1,2,3]
+            int adjlist[] = getAdjNode(x);
+
+            for(int i = 0; i < adjlist.length; i++){
+                int adjval = adjlist[i];  // we get each node value
+                // check whether it is visited (true) or not visited (false)
+                if(!visited[adjval]){
+                    // if the node is visited then, insert in the queue
+                    que.enqueue(adjval);
+
+                    // after visiting, changing the boolean into true
+                    visited[adjval] = true;
+                }
+            }
+            // printing fully explored elements/nodes
+            System.out.println(x);
+            
+        }
+    }
     public int[] getAdjNode(int i) {
         int[] list = new int[a[i].getSize()];
         int indx = 0;
@@ -70,5 +107,8 @@ public class GraphAdjList {
         g.addEdge(2, 4);
         g.addEdge(3, 4);
         g.printGraph1();
+
+
+        g.BFS(0);
     }
 }
