@@ -85,6 +85,31 @@ public class GraphAdjList {
             
         }
     }
+
+    public void depthFirstSearch(int rootNode){
+        boolean visited[] = new boolean[vertices];
+        // partially visited
+        visited[rootNode] = true;
+        dfs(rootNode, visited);
+    }
+
+    public void dfs(int rootNode, boolean[] visited){
+        System.out.println(rootNode);
+
+        // getting adn nodes
+        int list[] = getAdjNode(rootNode);
+
+        for(int i = 0; i < list.length; i++){
+            // getting each element
+            int adjVal = list[i];
+
+            if(!visited[adjVal]){
+                visited[adjVal] = true;
+                dfs(adjVal, visited);
+            }
+        }
+    }
+
     public int[] getAdjNode(int i) {
         int[] list = new int[a[i].getSize()];
         int indx = 0;
@@ -93,7 +118,6 @@ public class GraphAdjList {
             System.out.print(current.data + " , ");
             current = current.next;
             list[indx++] = current.data;
-
         }
         return list;
     }
@@ -109,6 +133,7 @@ public class GraphAdjList {
         g.printGraph1();
 
 
-        g.BFS(0);
+        // g.BFS(0);
+        g.depthFirstSearch(0);
     }
 }
