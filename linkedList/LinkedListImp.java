@@ -64,7 +64,7 @@ public class LinkedListImp {
         public void removeAtAnyPoint(int pos){
             Node current = head;
             size--;
-            for(int i = 2; i < pos; i++){
+            for(int i = 1; i < pos; i++){
                 current = current.next;
             }
             current.next = current.next.next;
@@ -77,6 +77,7 @@ public class LinkedListImp {
             }
             return current.data;
         }
+        
 
         public int getSize() {
             return size;
@@ -85,9 +86,10 @@ public class LinkedListImp {
         public void printLinkedList(){
             Node current = head;
             while(current != null){
-                System.out.println(current.data);
+                System.out.print(current.data + " ---> ");
                 current = current.next;
             }
+            System.out.println();
 
         }
     }
@@ -101,6 +103,10 @@ public class LinkedListImp {
         obj.append(80);
 
         obj.addHeadFirst(100);
+        obj.addHeadFirst(1);
+        obj.append(1999);
+        obj.printLinkedList();
+        obj.removeAtAnyPoint(1);
         obj.printLinkedList();
 
         System.out.println("Data: " + obj.getDataAtAnyPos(5));

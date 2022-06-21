@@ -85,6 +85,7 @@ public class QueueExample {
         System.out.println(q.dequeue());
 
         q.printQueue();
+        
     }
 
 

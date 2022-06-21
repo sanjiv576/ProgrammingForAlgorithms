@@ -110,6 +110,167 @@ public class GraphAdjList {
         }
     }
 
+    // 
+    // topological sorting using bfs
+    public int[] topoSort(){
+        int result[] = new int[vertices];
+        int counter = -1;
+        int indegree[] = new int[vertices];
+        for(int i = 0; i< vertices; i++){
+            int list[] = getAdjNode(i);
+            for(int j = 0; j < list.length; j ++){
+                int adjval = list[j];
+                // now increasing degree value
+                indegree[adjval] = indegree[adjval] + 1;
+            }
+        }
+
+        
+        QueueExample que = new QueueExample(vertices);
+// now inserting into queue whose degree is zero
+        for(int i = 0; i < indegree.length; i++){
+            if(indegree[i] == 0){
+                que.enqueue(i);
+            }
+        }
+        // for detecting  cycle in directed graph
+        int count = 0;
+        while (!que.isEmpty()){
+            count++;
+            int x = que.dequeue();
+
+            // inserting the result into array for turther use
+            result[++counter] = x;
+
+            System.out.println(x);
+
+            // now for decreasing degree
+
+            int list[] = getAdjNode(x);
+            for(int i = 0; i < list.length; i++){
+                int adjval = list[i];
+
+                indegree[adjval]--;
+
+                if(indegree[adjval] == 0){
+                    que.enqueue(adjval);
+                }
+            }
+        }
+        if(count == vertices){
+            System.out.println("cycle detected");
+        }
+
+        return result;
+
+    }
+// topologial sorting using dfs
+
+    public void topoSortByDFS(){
+        boolean visited[] = new boolean[vertices];
+        StackExample stk = new StackExample(vertices);
+
+        for(int i = 0; i< vertices; i++){
+            if(!visited[i]){
+                dfsToposort(i, visited, stk);
+            }
+        }
+
+        for(int i = 0; i < vertices; i++){
+            System.out.println(stk.pop());
+        }
+    }
+
+    // recursively being called this method
+    public void dfsToposort(int rootNode, boolean visited[], StackExample stk) {
+        visited[rootNode] = true;
+
+        int[] list = getAdjNode(rootNode);
+        for(int i = 0; i < list.length; i++){
+            int adjval = list[i];
+            if(!visited[rootNode]){
+                dfsToposort(rootNode, visited, stk);
+            }
+        }
+        // stk.push(rootNode);
+    }
+
+    // greedy technique
+    public void activitySolution(int start[], int finish[]) {
+        int workNum = 1;
+        // index for both arrays
+        int k = 0;
+        System.out.print("Activity choose : " + k);
+
+        for (int i = 1; i< start.length; i++){
+            if(start[i] >= finish[k]){
+                k = i;
+                workNum++;
+
+                System.out.print( " --> " + k);
+            }
+        }
+        System.out.println();
+        System.out.println("No. of works : " + workNum);
+    }
+    // for detecing cycle algo in directed graph
+
+    public boolean cycleDetect(){
+        
+        int indegree[] = new int[vertices];
+        for(int i = 0; i< vertices; i++){
+            int list[] = getAdjNode(i);
+            for(int j = 0; j < list.length; j ++){
+                int adjval = list[j];
+                // now increasing degree value
+                indegree[adjval] = indegree[adjval] + 1;
+            }
+        }
+
+        
+        QueueExample que = new QueueExample(vertices);
+// now inserting into queue whose degree is zero
+        for(int i = 0; i < indegree.length; i++){
+            if(indegree[i] == 0){
+                que.enqueue(i);
+            }
+        }
+        // for detecting  cycle in directed graph
+        int count = 0;
+        // 
+        while (!que.isEmpty()){
+            count++;
+            int x = que.dequeue();
+
+            // inserting the result into array for turther use
+
+            System.out.println(x);
+
+            // now for decreasing degree
+
+            int list[] = getAdjNode(x);
+            for(int i = 0; i < list.length; i++){
+                int adjval = list[i];
+
+                indegree[adjval]--;
+
+                if(indegree[adjval] == 0){
+                    que.enqueue(adjval);
+                }
+            }
+        }
+        if(count == vertices){
+            System.out.println("cycle detected");
+            return true;
+        }
+        else {
+            System.out.println("cycle is not deteced");
+            return false;
+        }
+        
+
+    }
+
     public int[] getAdjNode(int i) {
         int[] list = new int[a[i].getSize()];
         int indx = 0;
@@ -134,6 +295,13 @@ public class GraphAdjList {
 
 
         // g.BFS(0);
-        g.depthFirstSearch(0);
+        // g.depthFirstSearch(0);
+
+        // g.topoSort();
+
+        int[] start = {1, 3, 2, 4, 8, 7, 9, 11, 9, 12};
+        int[] finish = {3, 4, 5, 7, 9, 11, 12, 13, 14};
+
+        g.activitySolution(start, finish);
     }
 }
