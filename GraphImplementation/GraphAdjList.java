@@ -184,7 +184,7 @@ public class GraphAdjList {
     // recursively being called this method
     public void dfsToposort(int rootNode, boolean visited[], StackExample stk) {
         visited[rootNode] = true;
-
+        stk = new StackExample(rootNode);
         int[] list = getAdjNode(rootNode);
         for(int i = 0; i < list.length; i++){
             int adjval = list[i];
