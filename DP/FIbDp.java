@@ -46,7 +46,7 @@ public class FIbDp {
 
         // int result = d.fibo(20);
 
-        HashMap<Integer, Integer> map = new HashMap<>()
+        HashMap<Integer, Integer> map = new HashMap<>();
         System.out.println(d.fidDp(20, map));
     }
 }
